@@ -1,0 +1,16 @@
+<%- include('partials/header.ejs') %> 
+<div class="d-flex flex-wrap">
+<%products.forEach(product =>{%>
+  <div class="card w-25 h-25">
+    <img class="card-img-top" src="<%=product.imgURL%>" />
+    <div class="card-body">
+      <h5 class="card-title text-center"><%=product.title%></h5>
+      <p class="card-text text-center">
+        $<%=product.price%>
+      </p>
+      <a href="#" class="btn btn-block btn-primary">Add to cart</a>
+    </div>
+  </div>
+<%})%> 
+</div>
+<%-include('partials/footer.ejs') %>

@@ -1,0 +1,11 @@
+<%- include('../partials/header.ejs') %>
+<ul>
+  <%products.forEach(product =>{%>
+  <li>
+    <a href="/admin/update-product/<%=product._id%>">
+        <%=product.title%> - $<%=product.price%>
+    </a>
+  </li>
+  <%})%>
+</ul>
+<%-include('../partials/footer.ejs') %>

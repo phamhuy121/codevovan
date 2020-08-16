@@ -1,0 +1,16 @@
+<%- include('../partials/header.ejs') %>
+<ul>
+  <%products.forEach(product =>{%>
+  <li>
+    <a href="/admin/update-product/<%=product._id%>">
+        <%=product.title%> - $<%=product.price%>
+    </a>
+    <form action="/admin/delete-product/<%=product._id%>?_method=DELETE" method="POST">
+        <button type="submit" class="btn btn-danger">X</button>
+    </form>
+  </li>
+  <%})%>
+</ul>
+<%-include('../partials/footer.ejs') %>
+
+

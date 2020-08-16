@@ -1,0 +1,29 @@
+<%- include('../partials/header.ejs') %>
+<div class="container">
+  <h1>Update product <%=product.title%> with ID: <%=product._id%></h1>
+  <form action="/admin/update-product/<%=product._id%>?_method=PUT" method="POST">
+    <div class="form-group">
+      <label for="title">Product Name:</label>
+      <input type="text" id="title" name="title" class="form-control" value="<%=product.title%>"/>
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="text" id="price" name="price" class="form-control" value="<%=product.price%>"/>
+    </div>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <select name="type" id="type">
+        <option value="tech">Tech</option>
+        <option value="animal">Animal</option>
+        <option value="food">Food</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="imgURL">Image URL:</label>
+      <input type="text" id="imgURL" name="imgURL" class="form-control" value="<%=product.imgURL%>"/>
+    </div>
+    <a href="/admin" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+</div>
+<%-include('../partials/footer.ejs') %>

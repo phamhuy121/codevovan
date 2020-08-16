@@ -1,0 +1,29 @@
+<%- include('../partials/header.ejs') %>
+<div class="container">
+  <h1>This is the Add Product Page</h1>
+  <form action="/admin/add-product" method="POST">
+    <div class="form-group">
+      <label for="title">Product Name:</label>
+      <input type="text" id="title" name="title" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="text" id="price" name="price" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <select name="type" id="type">
+        <option value="tech">Tech</option>
+        <option value="animal">Animal</option>
+        <option value="food">Food</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="imgURL">Image URL:</label>
+      <input type="text" id="imgURL" name="imgURL" class="form-control" />
+    </div>
+    <a href="/admin" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-success">Add</button>
+  </form>
+</div>
+<%-include('../partials/footer.ejs') %>
