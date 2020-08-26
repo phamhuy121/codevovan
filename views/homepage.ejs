@@ -1,16 +1,22 @@
-<%- include('partials/header.ejs') %> 
+<%- include('partials/header.ejs') %>
 <div class="d-flex flex-wrap">
-<%products.forEach(product =>{%>
+  <%products.forEach(product =>{%>
   <div class="card w-25 h-25">
     <img class="card-img-top" src="<%=product.imgURL%>" />
     <div class="card-body">
       <h5 class="card-title text-center"><%=product.title%></h5>
-      <p class="card-text text-center">
-        $<%=product.price%>
-      </p>
-      <a href="#" class="btn btn-block btn-primary">Add to cart</a>
+      <p class="card-text text-center">$<%=product.price%></p>
+      <form action="/cart" method="POST">
+        <input type="text" name="productId" value="<%=product._id%>" hidden />
+        <input type="text" name="name" value="<%=product.title%>" hidden />
+        <input type="text" name="price" value="<%=product.price%>" hidden />
+        <input type="text" name="quantity" value="1" hidden />
+        <button type="submit" class="btn btn-block btn-primary">
+          Add to cart
+        </button>
+      </form>
     </div>
   </div>
-<%})%> 
+  <%})%>
 </div>
 <%-include('partials/footer.ejs') %>

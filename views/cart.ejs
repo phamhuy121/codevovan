@@ -1,0 +1,10 @@
+<%- include('partials/header.ejs') %>
+<h2>This is your cart</h2>
+<h3>Your userID: <%=cart.userId%></h3>
+<ul>
+  <% products.forEach(product =>{%>
+  <li>Name: <%=product.name%> || Quantity: <%=product.quantity%></li>
+  <% }) %>
+</ul>
+<h4>Total = $<%=total%></h4>
+<%-include('partials/footer.ejs') %>

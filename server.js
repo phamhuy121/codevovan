@@ -9,8 +9,12 @@ app.use(express.json());
 // Routes
 const adminRoute = require("./routes/admin");
 const shopRoute = require("./routes/shop");
+const cartRoute = require("./routes/cart");
+const userRoute = require("./routes/user");
 app.use("/admin", adminRoute);
 app.use("/", shopRoute);
+app.use("/cart", cartRoute);
+app.use("/user", userRoute);
 // Connect to database
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/tienshop", {
