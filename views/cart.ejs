@@ -1,10 +1,29 @@
 <%- include('partials/header.ejs') %>
 <h2>This is your cart</h2>
 <h3>Your userID: <%=cart.userId%></h3>
-<ul>
-  <% products.forEach(product =>{%>
-  <li>Name: <%=product.name%> || Quantity: <%=product.quantity%></li>
-  <% }) %>
-</ul>
-<h4>Total = $<%=total%></h4>
+
+<div class="container">
+  <ul>
+      <% products.forEach(product =>{%>
+      <form action="/cart/" method="POST">
+      <li>
+        Product name:<input
+          type="text"
+          name="name"
+          value="<%=product.name%>"
+          disabled
+        />
+        || Quantity:
+        <input type="text" name="quantity" value="<%=product.quantity%>" />
+        <input type="text" name="productId" value="<%=product.productId%>" hidden/>
+        <input type="text" name="price" value="<%=product.price%>" hidden/>
+        <button class="btn btn-primary" type="submit">Edit</button>
+      </li>
+      </form>
+      <% }) %>
+      <h4>Total = $<%=total%></h4>
+      <button class="btn btn-success" type="submit">Create Order</button>
+    </form>
+  </ul>
+</div>
 <%-include('partials/footer.ejs') %>
