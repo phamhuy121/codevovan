@@ -1,4 +1,7 @@
 const Cart = require("../models/cart.model");
+const Order = require("../models/order.model");
+const { use } = require("../routes/cart");
+const User = require("../models/user.model");
 
 exports.getCart = async (req, res) => {
   const userId = "5f44e940c4cfd52b0fa68568"; //logged in user ID
@@ -67,4 +70,25 @@ exports.postCart = async (req, res) => {
     });
     return res.redirect("/cart");
   }
+};
+
+exports.postSubmitCart = async (req, res) => {
+  const userCart = await Cart.findOne({ _id: req.body.cartId });
+  const userId = userCart.userId;
+  const userInfo = await User.findOne({ _id: userId });
+  let total = 0;
+  userCart.products.forEach((product) => {
+    total += product.price * product.quantity;
+  });
+  const newOrder = new Order({
+    user: {
+      userId: userInfo._id,
+      name: userInfo.name,
+      email: userInfo.email,
+    },
+    products: userCart.products,
+    total: total,
+  });
+  await newOrder.save();
+  res.send(newOrder);
 };

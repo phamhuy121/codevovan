@@ -1,4 +1,5 @@
 const Product = require("../models/product.model");
+const Order = require("../models/order.model");
 exports.getAddProduct = (req, res) => {
   res.render("admin/add-product.ejs");
 };
@@ -44,4 +45,10 @@ exports.deleteProduct = async (req, res) => {
   const product = await Product.findById({ _id: req.params.id });
   await product.remove();
   res.redirect("/admin/delete-product");
+};
+
+exports.getOrder = async (req, res) => {
+  const orders = await Order.find();
+  const products = orders.products;
+  res.render("admin/view-orders.ejs", { orders: orders, products: products });
 };

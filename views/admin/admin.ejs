@@ -1,8 +1,17 @@
 <%- include('../partials/header.ejs') %>
-<h1>This is the admin route</h1>
-<a href="/admin/add-product">Click here to add products</a>
-<br />
-<a href="/admin/update-product">Click here to update products</a>
-<br>
-<a href="/admin/delete-product">Click here to delete products</a>
+<div class="container">
+  <h1>This is the admin route</h1>
+  <a class="btn btn-success btn-block" href="/admin/add-product"
+    >Click here to add products</a
+  >
+  <a class="btn btn-primary btn-block" href="/admin/update-product"
+    >Click here to update products</a
+  >
+  <a class="btn btn-danger btn-block" href="/admin/delete-product"
+    >Click here to delete products</a
+  >
+  <a class="btn btn-info btn-block" href="/admin/get-orders"
+    >Click here to show all orders</a
+  >
+</div>
 <%-include('../partials/footer.ejs') %>

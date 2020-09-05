@@ -1,11 +1,14 @@
 <%- include('partials/header.ejs') %>
-<h2>This is your cart</h2>
-<h3>Your userID: <%=cart.userId%></h3>
-
 <div class="container">
+  <h2>This is your cart</h2>
+  <h3>Your userID: <%=cart.userId%></h3>
+
   <ul>
-      <% products.forEach(product =>{%>
-      <form action="/cart/" method="POST">
+    <small style="font-style: italic; opacity: 0.6"
+      >*Change the quantity to 0 to delete item</small
+    >
+    <% products.forEach(product =>{%>
+    <form action="/cart/edit/<%=product.productId%> " method="POST">
       <li>
         Product name:<input
           type="text"
@@ -15,14 +18,24 @@
         />
         || Quantity:
         <input type="text" name="quantity" value="<%=product.quantity%>" />
-        <input type="text" name="productId" value="<%=product.productId%>" hidden/>
-        <input type="text" name="price" value="<%=product.price%>" hidden/>
-        <button class="btn btn-primary" type="submit">Edit</button>
+        <input
+          type="text"
+          name="productId"
+          value="<%=product.productId%>"
+          hidden
+        />
+        <input type="text" name="price" value="<%=product.price%>" hidden />
+        || Price: $<%=product.price%> / product
+        <button class="btn btn-primary" type="submit">Change quantity</button>
       </li>
-      </form>
-      <% }) %>
-      <h4>Total = $<%=total%></h4>
-      <button class="btn btn-success" type="submit">Create Order</button>
+    </form>
+    <% }) %>
+    <h4>Total = $<%=total%></h4>
+    <form action="/cart/submit-order" method="POST">
+      <input type="text" value="<%=cart._id%>" hidden name="cartId" />
+      <button type="submit" class="btn btn-success btn-block">
+        Submit Order
+      </button>
     </form>
   </ul>
 </div>
