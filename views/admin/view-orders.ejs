@@ -4,7 +4,7 @@
     <thead>
       <tr>
         <th>Order ID</th>
-        <th>User ID / User name</th>
+        <th>User ID / User name / User email</th>
         <th>Products</th>
         <th>Total</th>
         <th>Date</th>
@@ -14,7 +14,9 @@
       <% orders.forEach(order=>{%>
       <tr>
         <td scope="row"><%=order._id%></td>
-        <td><%=order.user.userId%> / <%=order.user.name%></td>
+        <td>
+          <%=order.user.userId%> / <%=order.user.name%> / <%=order.user.email%>
+        </td>
         <td>
           <%order.products.forEach(product=>{%>
           <p><%=product.name%> x <%=product.quantity%></p>
