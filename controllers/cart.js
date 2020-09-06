@@ -4,7 +4,8 @@ const { use } = require("../routes/cart");
 const User = require("../models/user.model");
 
 exports.getCart = async (req, res) => {
-  const userId = "5f44e940c4cfd52b0fa68568"; //logged in user ID
+  const userId = req.session.userId; //logged in user ID
+  console.log(userId);
   const cart = await Cart.findOne({ userId: userId }); //fetch the cart of the user
   //if the cart exist, render the information of the cart
   if (cart) {
@@ -23,7 +24,7 @@ exports.getCart = async (req, res) => {
 };
 
 exports.postCart = async (req, res) => {
-  const userId = "5f44e940c4cfd52b0fa68568"; //logged in user ID
+  const userId = req.session.userId; //logged in user ID
   // find the cart for the user Id
   let cart = await Cart.findOne({ userId: userId });
   // Check if the cart exists for user
