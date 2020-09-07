@@ -1,8 +1,15 @@
 const Product = require("../models/product.model");
 const User = require("../models/user.model");
 exports.getShop = async (req, res) => {
+  const userId = req.session.userId;
+  const user = User.findOne({ _id: userId });
   const products = await Product.find({});
-  res.render("homepage.ejs", { products: products });
+  const isAdmin = req.session.isAdmin;
+  res.render("homepage.ejs", {
+    products: products,
+    isAdmin: isAdmin,
+    user: user,
+  });
 };
 
 exports.getLogin = (req, res) => {
@@ -17,6 +24,7 @@ exports.postLogin = async (req, res) => {
     // if the password correct, log the user in using session and back to the homepage
     if (user.password == inputPassword) {
       req.session.userId = user._id;
+      req.session.isAdmin = user.isAdmin;
       res.redirect("/");
     } else {
       res.send("Password Incorrect");

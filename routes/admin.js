@@ -2,9 +2,7 @@ const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/admin");
 
-router.get("/", (req, res) => {
-  res.render("admin/admin.ejs");
-});
+router.get("/", adminController.getAdminRoute);
 
 router.get("/add-product", adminController.getAddProduct);
 

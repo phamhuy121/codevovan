@@ -1,5 +1,15 @@
 const Product = require("../models/product.model");
 const Order = require("../models/order.model");
+const User = require("../models/user.model");
+
+exports.getAdminRoute = (req, res) => {
+  if (req.session.isAdmin == true) {
+    res.render("admin/admin.ejs");
+  } else {
+    res.render("auth/auth-error.ejs");
+  }
+};
+
 exports.getAddProduct = (req, res) => {
   res.render("admin/add-product.ejs");
 };
