@@ -25,7 +25,11 @@ app.use("/cart", cartRoute);
 app.use("/user", userRoute);
 // Connect to database
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/tienshop", {
+// mongoose.connect("mongodb://localhost/tienshop", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

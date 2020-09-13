@@ -25,6 +25,10 @@ exports.getCart = async (req, res) => {
 
 exports.postCart = async (req, res) => {
   const userId = req.session.userId; //logged in user ID
+  //if user not logged in
+  if (!req.session.userId) {
+    res.redirect("/cart");
+  }
   // find the cart for the user Id
   let cart = await Cart.findOne({ userId: userId });
   // Check if the cart exists for user
@@ -91,5 +95,5 @@ exports.postSubmitCart = async (req, res) => {
     total: total,
   });
   await newOrder.save();
-  res.send(newOrder);
+  res.render("submit-order-success.ejs");
 };

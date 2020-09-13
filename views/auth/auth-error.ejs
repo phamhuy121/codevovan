@@ -1,5 +1,9 @@
 <%- include('../partials/header.ejs') %>
-<h2>You do not have permission to view this page</h2>
+<div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading">Permission Denied!</h4>
+  <p>You do not have permission to view this page</p>
+  <p class="mb-0">Please Login with your admin account to view this content</p>
+</div>
 <br />
-<h3>Please login with your admin account to view this content</h3>
+<a href="/login" class="btn btn-success btn-block">Login</a>
 <%- include('../partials/footer.ejs') %>

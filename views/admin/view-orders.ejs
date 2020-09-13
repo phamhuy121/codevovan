@@ -8,6 +8,7 @@
         <th>Products</th>
         <th>Total</th>
         <th>Date</th>
+        <th>Delete Order</th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,12 @@
         </td>
         <td>$<%=order.total%></td>
         <td><%=order.modifiedOn%></td>
+        <td>
+          <form action="/admin/delete-order" method="POST">
+            <input type="text" name="orderId" hidden value="<%= order._id %>" />
+            <button type="submit" class="btn btn-danger">X</button>
+          </form>
+        </td>
       </tr>
       <% }) %>
     </tbody>

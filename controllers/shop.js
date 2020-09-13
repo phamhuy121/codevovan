@@ -2,13 +2,15 @@ const Product = require("../models/product.model");
 const User = require("../models/user.model");
 exports.getShop = async (req, res) => {
   const userId = req.session.userId;
-  const user = User.findOne({ _id: userId });
+  const user = await User.findOne({ _id: userId });
   const products = await Product.find({});
   const isAdmin = req.session.isAdmin;
+  console.log(user);
   res.render("homepage.ejs", {
     products: products,
     isAdmin: isAdmin,
     user: user,
+    userId: userId,
   });
 };
 

@@ -1,4 +1,12 @@
 <%- include('partials/header.ejs') %>
-<h1>Your cart not found!</h1>
-<a href="/" class="btn btn-primary">Start adding some products to your cart</a>
+<div class="container">
+  <div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading">Your cart not found!</h4>
+    <p>Please Login and start adding some items!</p>
+  </div>
+  <a href="/login" class="btn btn-success btn-block">Login</a>
+  <a href="/" class="btn btn-primary btn-block"
+    >Start adding some products to your cart</a
+  >
+</div>
 <%-include('partials/footer.ejs') %>
