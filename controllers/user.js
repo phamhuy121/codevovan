@@ -10,5 +10,5 @@ exports.postUser = async (req, res) => {
     password: req.body.password,
   });
   await user.save();
-  res.redirect("/");
+  res.redirect("/login");
 };
