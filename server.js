@@ -19,10 +19,13 @@ const adminRoute = require("./routes/admin");
 const shopRoute = require("./routes/shop");
 const cartRoute = require("./routes/cart");
 const userRoute = require("./routes/user");
+const typeRoute = require("./routes/type");
+
 app.use("/admin", adminRoute);
 app.use("/", shopRoute);
 app.use("/cart", cartRoute);
 app.use("/user", userRoute);
+app.use("/type", typeRoute);
 // Connect to database
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/nohope", {

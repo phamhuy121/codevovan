@@ -1,0 +1,15 @@
+<%- include('partials/header.ejs') %>
+<div class="container">
+  <form action="/type" method="POST">
+    <div class="mb-3">
+      <label for="typename-input" class="form-label">Type Name</label>
+      <input class="form-control" id="typename-input" name="typeName" />
+      <div class="form-text">Only admin can edit this</div>
+    </div>
+    <button type="submit" id="type-submit-btn" class="btn btn-primary">
+      Submit
+    </button>
+  </form>
+</div>
+
+<%-include('partials/footer.ejs') %>

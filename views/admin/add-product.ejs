@@ -13,9 +13,9 @@
     <div class="form-group">
       <label for="type">Type</label>
       <select name="type" id="type">
-        <option value="tech">Tech</option>
-        <option value="animal">Animal</option>
-        <option value="food">Food</option>
+        <% types.forEach(type => { %>
+        <option value="<%=type.typeName%>"><%=type.typeName%></option>
+        <% }) %>
       </select>
     </div>
     <div class="form-group">

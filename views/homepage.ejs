@@ -38,6 +38,26 @@
           <li class="nav-item active">
             <a href="/cart" class="nav-link">Cart</a>
           </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%  if(typeof types !== 'undefined'){ %> 
+                <% types.forEach(type => { %>
+                
+                  <li><a class="dropdown-item" href="itemSearchType/<%= type.typeName%> "><%= type.typeName%></a></li>
+                  <% }) %>
+             <% } %>            
+            </ul>
+          </li>
+          <li>
+          <form class="d-flex">
+            <input class="form-control me-2  " id="search-input" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success " id="search-btn">Search</button>
+          </form>
+          </li>
         </ul>
         <ul class="navbar-nav justify-content-end mt-2 mt-lg-0">
           <% if(userId){ %> 
@@ -76,4 +96,20 @@
   </div>
   <%})%>
 </div>
+
+
 <%-include('partials/footer.ejs') %>
+
+<script>
+  console.log("loading")
+  const searchInput = $("#search-input")
+  const searchButton = $("#search-btn")
+
+searchButton.click((e) => {
+    e.preventDefault()
+    let inputValue = searchInput.val()
+    console.log("/itemSearch/" + inputValue)
+    window.location.href =  "/itemSearch/" + inputValue
+}
+)
+</script>
